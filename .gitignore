@@ -1,0 +1,12 @@
+# Node modules
+node_modules/
+
+# Archivos de log
+*.log
+
+# Archivos de entorno
+.env
+
+# Archivos de sistema de OS
+.DS_Store
+Thumbs.db
