@@ -1,217 +1,134 @@
-# todo-list-app-MERN
-
 
 # DoDo! - Frontend
 
-Frontend moderno para gestión de tareas.
+**URL del sitio desplegado:**
+🌐 [https://dodotaskmanager.netlify.app](https://dodotaskmanager.netlify.app)
 
-## 🚀 Tecnologías
+Este proyecto es el **frontend** de la aplicación DoDo! para gestionar tareas (To-Do) de manera moderna, segura e intuitiva. Está desarrollado en **React** con **TypeScript**, usa **Tailwind CSS**, **Ant Design** y consume la API RESTful desplegada en [Render](https://taskflow-api-modern-task-management.onrender.com).
 
-- **React**
-- **TypeScript**
-- **Vite**
-- **Tailwind CSS**
-- **Ant Design**
+![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
+![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
+![Tailwind CSS](https://img.shields.io/badge/TailwindCSS-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white)
+![Ant Design](https://img.shields.io/badge/AntDesign-0170FE?style=for-the-badge&logo=ant-design&logoColor=white)
 
 ---
 
-## 📑 Tabla de contenidos
+## Tabla de contenidos
 
-- [todo-list-app-MERN](#todo-list-app-mern)
 - [DoDo! - Frontend](#dodo---frontend)
-  - [🚀 Tecnologías](#-tecnologías)
-  - [📑 Tabla de contenidos](#-tabla-de-contenidos)
-  - [📌 Descripción](#-descripción)
-  - [✨ Características principales](#-características-principales)
-  - [🗂️ Estructura del proyecto](#️-estructura-del-proyecto)
-  - [📋 Requisitos](#-requisitos)
-  - [💻 Instalación](#-instalación)
-  - [⚙️ Configuración](#️-configuración)
-    - [Variables de entorno](#variables-de-entorno)
-  - [🛠️ Scripts disponibles](#️-scripts-disponibles)
-  - [🧩 Componentes clave](#-componentes-clave)
-    - [`pages/`](#pages)
-    - [`components/`](#components)
-  - [🔗 Servicios API](#-servicios-api)
-    - [`services/`](#services)
-      - [Autenticación](#autenticación)
-      - [CRUD de tareas](#crud-de-tareas)
-  - [🚀 Despliegue](#-despliegue)
-    - [En Render.com](#en-rendercom)
-  - [🤝 Contribuciones](#-contribuciones)
-  - [🪪 Licencia](#-licencia)
-  - [📬 Contacto](#-contacto)
+  - [Tabla de contenidos](#tabla-de-contenidos)
+  - [Descripción](#descripción)
+  - [Características](#características)
+  - [Requisitos](#requisitos)
+  - [Instalación](#instalación)
+  - [Uso](#uso)
+  - [Variables de entorno](#variables-de-entorno)
+  - [Estructura del proyecto](#estructura-del-proyecto)
+  - [Contribuciones](#contribuciones)
+  - [Licencia](#licencia)
+  - [Contacto](#contacto)
 
 ---
 
-## 📌 Descripción
+## Descripción
 
-**TaskFlow** es un frontend moderno para gestión de tareas, desarrollado con React y TypeScript. Proporciona una interfaz intuitiva para interactuar con la API de TaskFlow.
-
----
-
-## ✨ Características principales
-
-- 🚀 Rendimiento optimizado con **Vite**
-- 🔒 Autenticación segura con **JWT**
-- 📱 Diseño responsive con **Tailwind CSS**
-- 🧩 Componentes reutilizables con **Ant Design**
-- 📊 Gestión de estado con **React Hooks**
-- 🔄 Sincronización en tiempo real con el backend
+DoDo! Frontend permite a los usuarios autenticarse, crear, ver, editar y eliminar tareas personales. Se conecta al backend mediante llamadas protegidas con JWT y muestra la información con una interfaz atractiva y responsiva.
 
 ---
 
-## 🗂️ Estructura del proyecto
+## Características
 
-```
-client/
-├── dist/                    # Build de producción
-├── public/                  # Assets públicos
-├── src/
-│   ├── assets/              # Imágenes, iconos, etc.
-│   ├── components/          # Componentes reutilizables
-│   ├── pages/               # Vistas principales
-│   ├── services/            # Conexión con la API
-│   ├── util/                # Utilidades y helpers
-│   ├── App.css              # Estilos principales
-│   ├── App.tsx              # Componente raíz
-│   ├── index.css            # Estilos globales
-│   ├── main.tsx             # Punto de entrada
-│   └── vite-env.d.ts        # Tipos para Vite
-├── .eslintrc.js             # Configuración ESLint
-├── index.html               # HTML principal
-├── tsconfig.json            # Configuración TypeScript
-└── vite.config.ts           # Configuración Vite
-```
+- 🔐 Autenticación de usuarios (login, token JWT)
+- 📝 Gestión de tareas (CRUD)
+- 🎨 UI moderna y responsiva con Ant Design y Tailwind CSS
+- ⚙️ Integración con backend seguro
+- 📱 Adaptado para dispositivos móviles
 
 ---
 
-## 📋 Requisitos
+## Requisitos
 
-- **Node.js v18+**
-- **npm v9+**
-- Conexión con el backend de TaskFlow
+- Node.js v18 o superior
+- npm v9 o superior
+- Acceso al backend (ya desplegado o local)
 
 ---
 
-## 💻 Instalación
+## Instalación
 
-Clona el repositorio:
-
+1. Clona el repositorio:
 ```bash
-git clone https://github.com/AlejandroRomero17/TaskFlow-Frontend.git
-cd TaskFlow-Frontend
+git clone https://github.com/AlejandroRomero17/DoDo-Modern-Task-Management-Frontend.git
+cd DoDo-Modern-Task-Management-Frontend
 ```
 
-Instala las dependencias:
-
+2. Instala las dependencias:
 ```bash
 npm install
 ```
 
-Crea el archivo `.env` y configura:
-
+3. Crea el archivo `.env` y agrega:
 ```env
 VITE_API_URL=https://taskflow-api-modern-task-management.onrender.com
 ```
 
-Inicia el servidor de desarrollo:
-
+4. Ejecuta el proyecto:
 ```bash
 npm run dev
 ```
 
 ---
 
-## ⚙️ Configuración
+## Uso
 
-### Variables de entorno
-
-| Variable        | Descripción                  | Valor por defecto         |
-|----------------|------------------------------|---------------------------|
-| `VITE_API_URL` | URL del backend de TaskFlow  | `http://localhost:5000`   |
+1. Accede a la app en producción: [https://dodotaskmanager.netlify.app](https://dodotaskmanager.netlify.app)
+2. Regístrate con tu nombre de usuario, nombre, apellido y contraseña.
+3. Inicia sesión y empieza a gestionar tus tareas.
 
 ---
 
-## 🛠️ Scripts disponibles
+## Variables de entorno
 
-| Comando          | Descripción                               |
-|------------------|-------------------------------------------|
-| `npm run dev`     | Inicia servidor de desarrollo             |
-| `npm run build`   | Crea versión optimizada para producción   |
-| `npm run lint`    | Ejecuta análisis de código con ESLint     |
-| `npm run preview` | Previsualiza build de producción          |
+| Variable        | Descripción                           | Ejemplo                                      |
+|----------------|---------------------------------------|----------------------------------------------|
+| VITE_API_URL   | URL del backend que expone la API     | https://taskflow-api-modern-task-management.onrender.com |
 
 ---
 
-## 🧩 Componentes clave
+## Estructura del proyecto
 
-### `pages/`
-
-- **Login**: Autenticación de usuarios
-- **Dashboard**: Vista principal de tareas
-- **TaskEditor**: Crear/editar tareas
-
-### `components/`
-
-- **TaskCard**: Componente visual para tareas
-- **Navbar**: Barra de navegación superior
-- **AuthForm**: Formulario reutilizable para autenticación
-
----
-
-## 🔗 Servicios API
-
-### `services/`
-
-#### Autenticación
-
-```ts
-const loginUser = (data: AuthData) => {
-  return axios.post<AuthResponse>(`${SERVER_URL}/api/auth/login`, data);
-};
 ```
-
-#### CRUD de tareas
-
-```ts
-const getAllToDo = (userId: string) => {
-  return axios.get(`${SERVER_URL}/api/todo/get-all-to-do/${userId}`);
-};
+src/
+├── assets/         # Imágenes y recursos estáticos
+├── components/     # Componentes reutilizables (Navbar, etc.)
+├── pages/          # Vistas principales (Login, Register, ToDoList)
+├── services/       # Lógica para consumir API (axios)
+├── util/           # Funciones utilitarias (token, errores, etc.)
+├── App.tsx         # Componente principal
+├── main.tsx        # Punto de entrada
+└── index.html      # HTML base
 ```
 
 ---
 
-## 🚀 Despliegue
+## Contribuciones
 
-### En [Render.com](https://render.com)
-
-1. Conectar repositorio de GitHub
-2. Configurar:
-   - **Build Command**: `npm run build`
-   - **Start Command**: `npm run preview`
-3. Añadir variable de entorno: `VITE_API_URL`
+1. Haz fork del proyecto.
+2. Crea tu rama: `git checkout -b feature/nueva-funcionalidad`
+3. Realiza tus cambios y haz commit: `git commit -m "feat: añade nueva funcionalidad"`
+4. Sube los cambios: `git push origin feature/nueva-funcionalidad`
+5. Abre un Pull Request.
 
 ---
 
-## 🤝 Contribuciones
+## Licencia
 
-1. Haz fork del proyecto
-2. Crea tu rama (`git checkout -b feature/nueva-funcionalidad`)
-3. Haz commit (`git commit -m 'Añade nueva funcionalidad'`)
-4. Haz push (`git push origin feature/nueva-funcionalidad`)
-5. Abre un Pull Request
+Este proyecto está bajo la licencia **MIT**.
 
 ---
 
-## 🪪 Licencia
+## Contacto
 
-MIT © Alejandro Romero
-
----
-
-## 📬 Contacto
-
-- GitHub: [@AlejandroRomero17](https://github.com/AlejandroRomero17)
-- Email: gonzalez.romero.alejandroo@gmail.com
-- LinkedIn: [Alejandro Romero](https://linkedin.com/in/alejandro-romero)
+- **Nombre:** Alejandro Gonzalez Romero
+- **Correo electrónico:** gonzalez.romero.alejandroo@gmail.com
+- **GitHub:** [https://github.com/AlejandroRomero17](https://github.com/AlejandroRomero17)

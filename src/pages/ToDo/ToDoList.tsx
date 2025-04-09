@@ -22,6 +22,8 @@ import ToDoServices from "../../services/toDoServices";
 import { getErrorMessage, type ErrorResponse } from "../../util/GetError";
 import { getUserDetails } from "../../util/GetUser";
 import styles from "./ToDoList.module.css";
+import type { AxiosError } from "axios";
+
 
 interface ToDoItem {
   _id: string;
@@ -72,7 +74,19 @@ function ToDoList() {
       }
     } catch (err) {
       console.error("Error fetching ToDos:", err);
-      message.error(getErrorMessage(err as ErrorResponse));
+      const axiosError = err as AxiosError;
+      if (
+        axiosError.response &&
+        (axiosError.response.status === 403 ||
+          axiosError.response.status === 401)
+      ) {
+        message.error("Session expired. Redirecting to login.");
+        // Eliminar el token si lo has almacenado, por seguridad
+        localStorage.removeItem("token");
+        navigate("/login");
+      } else {
+        message.error(getErrorMessage(err as ErrorResponse));
+      }
     }
   };
 
