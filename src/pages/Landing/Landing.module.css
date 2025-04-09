@@ -1,0 +1,47 @@
+/* Container Styles */
+.container {
+  max-width: 1536px;
+  margin: 0 auto;
+}
+
+/* Content Wrapper */
+.contentWrapper {
+  max-width: 1200px;
+  padding: 0 1.5rem;
+}
+
+/* CTA Button */
+.ctaButton {
+  transition: all 0.2s ease;
+}
+
+.ctaButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(249, 115, 22, 0.2);
+}
+
+/* Image Hover Effect */
+.hoverScale {
+  transition: transform 0.3s ease;
+}
+
+@media (min-width: 1024px) {
+  .hoverScale:hover {
+    transform: scale(1.03);
+  }
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .contentWrapper {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+    gap: 4rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .contentWrapper {
+    gap: 3rem;
+  }
+}
