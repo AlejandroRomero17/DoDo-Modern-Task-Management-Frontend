@@ -3,20 +3,21 @@ import Navbar from "../../components/Navbar";
 import { Link } from "react-router-dom";
 import landing from "../../assets/landing.svg";
 import Footer from "../../components/Footer";
+import { getUserDetails, isLoggedIn } from "../../util/GetUser";
 
 function Landing() {
+  const user = getUserDetails();
+
   return (
     <div className="flex flex-col min-h-screen">
-      {/* Navbar fijo en la parte superior */}
+      {/* Navbar fijo */}
       <div className="fixed top-0 left-0 w-full h-16 z-50 bg-white shadow">
         <Navbar active="home" />
       </div>
 
-      {/* Contenido principal que ocupa todo el espacio disponible */}
       <main className="min-h-screen pt-16 md:pt-20 flex items-center">
         <div className="w-full bg-gradient-to-b from-white to-gray-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16 flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-12 xl:gap-16">
-            {/* Texto de la página */}
             <div className="text-center lg:text-left lg:w-1/2 max-w-2xl mx-auto lg:mx-0">
               <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-gray-900 leading-tight">
                 Schedule Your Daily Tasks
@@ -29,21 +30,34 @@ function Landing() {
                 Organize your tasks efficiently and stay on top of your daily
                 goals with our intuitive platform.
               </p>
+
               <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 justify-center lg:justify-start mt-8">
-                <Link
-                  to="/register"
-                  className="bg-gradient-to-r from-orange-500 to-amber-500 text-white font-semibold py-3 px-8 rounded-lg hover:from-orange-600 hover:to-amber-600 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-orange-200/50 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-opacity-50"
-                >
-                  Get Started - It's Free
-                </Link>
-                <Link
-                  to="/login"
-                  className="border-2 border-orange-500 text-orange-500 font-semibold py-3 px-8 rounded-lg hover:bg-orange-50 transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-opacity-50"
-                >
-                  Login
-                </Link>
+                {!isLoggedIn() ? (
+                  <>
+                    <Link
+                      to="/register"
+                      className="bg-gradient-to-r from-orange-500 to-amber-500 text-white font-semibold py-3 px-8 rounded-lg hover:from-orange-600 hover:to-amber-600 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-orange-200/50 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-opacity-50"
+                    >
+                      Get Started - It's Free
+                    </Link>
+                    <Link
+                      to="/login"
+                      className="border-2 border-orange-500 text-orange-500 font-semibold py-3 px-8 rounded-lg hover:bg-orange-50 transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-opacity-50"
+                    >
+                      Login
+                    </Link>
+                  </>
+                ) : (
+                  <Link
+                    to="/to-do-list"
+                    className="bg-orange-500 text-white font-semibold py-3 px-8 rounded-lg hover:bg-orange-600 transition duration-300 shadow-md hover:shadow-orange-200/50"
+                  >
+                    Welcome, {user?.firstName || user?.username}
+                  </Link>
+                )}
               </div>
             </div>
+
             {/* Imagen SVG */}
             <div className="lg:w-1/2 flex justify-center items-center mt-8 lg:mt-0">
               <img
@@ -57,7 +71,6 @@ function Landing() {
         </div>
       </main>
 
-      {/* Footer que solo aparece al hacer scroll */}
       <Footer />
     </div>
   );

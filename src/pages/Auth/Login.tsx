@@ -4,10 +4,12 @@ import AuthServices from "../../services/authServices";
 import { getErrorMessage, type ErrorResponse } from "../../util/GetError";
 import { message } from "antd";
 import AuthLayout from "../../components/auth/AuthLayout";
+import { EyeOutlined, EyeInvisibleOutlined } from "@ant-design/icons";
 
 const Login: React.FC = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
@@ -24,7 +26,6 @@ const Login: React.FC = () => {
         password,
       });
 
-      // console.log("Login Response:", response.data);
       localStorage.setItem("toDoAppUser", JSON.stringify(response.data));
 
       message.success("Logged in Successfully!");
@@ -39,11 +40,9 @@ const Login: React.FC = () => {
 
   return (
     <AuthLayout>
-      {/* Contenedor principal simplificado */}
       <div className="max-w-4xl w-full bg-white rounded-xl shadow-lg overflow-hidden flex flex-col md:flex-row">
-        {/* Sección de imagen */}
+        {/* Lado izquierdo (imagen / ícono) */}
         <div className="md:w-1/2 bg-gradient-to-r from-orange-500 to-amber-500 p-8 flex items-center justify-center">
-          {/* Ícono SVG moderno */}
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className="w-64 h-64 text-white"
@@ -60,7 +59,7 @@ const Login: React.FC = () => {
           </svg>
         </div>
 
-        {/* Sección del formulario */}
+        {/* Formulario */}
         <div className="md:w-1/2 p-8 md:p-12">
           <h2 className="text-3xl font-bold text-gray-800 mb-2">
             Welcome Back
@@ -81,15 +80,21 @@ const Login: React.FC = () => {
               />
             </div>
 
-            <div>
+            <div className="relative">
               <label className="block text-gray-700 mb-2">Password</label>
               <input
-                type="password"
+                type={showPassword ? "text" : "password"}
                 placeholder="••••••••"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 outline-none transition"
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 outline-none transition pr-10"
               />
+              <div
+                onClick={() => setShowPassword(!showPassword)}
+                className="absolute right-3 top-9 text-xl text-gray-500 cursor-pointer"
+              >
+                {showPassword ? <EyeInvisibleOutlined /> : <EyeOutlined />}
+              </div>
             </div>
 
             <button

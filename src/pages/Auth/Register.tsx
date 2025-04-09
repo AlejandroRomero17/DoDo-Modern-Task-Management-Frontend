@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { message } from "antd";
+import { EyeOutlined, EyeInvisibleOutlined } from "@ant-design/icons";
 import { getErrorMessage, type ErrorResponse } from "../../util/GetError";
 import AuthServices from "../../services/authServices";
 import AuthLayout from "../../components/auth/AuthLayout";
@@ -8,6 +9,7 @@ import AuthLayout from "../../components/auth/AuthLayout";
 function Register() {
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [loading, setLoading] = useState(false);
@@ -36,11 +38,8 @@ function Register() {
 
   return (
     <AuthLayout>
-      {/* Contenedor principal simplificado */}
       <div className="max-w-4xl w-full bg-white rounded-xl shadow-lg overflow-hidden flex flex-col md:flex-row">
-        {/* Sección de imagen */}
         <div className="md:w-1/2 bg-gradient-to-r from-orange-500 to-amber-500 p-8 flex items-center justify-center">
-          {/* Ícono SVG moderno */}
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className="w-64 h-64 text-white"
@@ -57,7 +56,6 @@ function Register() {
           </svg>
         </div>
 
-        {/* Sección del formulario */}
         <div className="md:w-1/2 p-8 md:p-12">
           <h2 className="text-3xl font-bold text-gray-800 mb-2">
             Create Account
@@ -101,15 +99,21 @@ function Register() {
               />
             </div>
 
-            <div>
+            <div className="relative">
               <label className="block text-gray-700 mb-2">Password</label>
               <input
-                type="password"
+                type={showPassword ? "text" : "password"}
                 placeholder="••••••••"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 outline-none transition"
+                className="w-full px-4 py-2 pr-10 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 outline-none transition"
               />
+              <div
+                onClick={() => setShowPassword(!showPassword)}
+                className="absolute right-3 top-9 text-xl text-gray-500 cursor-pointer"
+              >
+                {showPassword ? <EyeInvisibleOutlined /> : <EyeOutlined />}
+              </div>
             </div>
 
             <button
